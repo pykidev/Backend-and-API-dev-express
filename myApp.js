@@ -48,7 +48,11 @@ app.get('/:word/echo', (req, res) => {
     res.send({echo:word});
 });
 
-
+app.get('/name', (req, res) => {
+    if(req.query != {}){
+        res.send({name: req.query.firstname + " " + req.query.lastname});
+    }
+})
 
 
 
