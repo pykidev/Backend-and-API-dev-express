@@ -37,31 +37,11 @@ app.get("/json", (req, res)=>{
 
 app.get("/now", (req, res, next) => {
     let timeString = new Date().toString();
-    const serverTimeZone = 'America/Los_Angeles'; // Oregon West time zone
-const clientTimeZone = 'Africa/Nairobi'; // Nairobi time zone
-
-const currentDate = new Date();
-
-// Format the date and time in the client's time zone
-const formatter = new Intl.DateTimeFormat('en-US', {
-  timeZone: clientTimeZone,
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  hour12: false,
-});
-
-const formattedTime = formatter.format(currentDate);
-console.log(formattedTime);
-
-const time = formattedTime.match(/\d{2}:\d{2}:\d{2}/)[0];
+    const time = timeString.match(/\d{2}:\d{2}:\d{2}/)[0];
     req.time = time;
     next();
 }, (req, res)=>{
-    res.send({time:req.time});
+    res.json({time:req.time});
 })
 
 
