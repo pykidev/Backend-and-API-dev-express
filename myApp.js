@@ -4,6 +4,10 @@ let app = express();
 //load environment variables
 require('dotenv').config();
 
+//include a body parser
+let bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended:false}));
 //serving static assets
 let staticPath = __dirname + "/public";
 //mounting the middleware to serve static files
@@ -53,8 +57,6 @@ app.get('/name', function handler_(req, res){
         res.send({name: req.query.first + " " + req.query.last});
     }
 })
-
-// app.route('/name').get(handler_).post(handler_)
 
 
 
