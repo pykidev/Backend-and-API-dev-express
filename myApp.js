@@ -1,5 +1,7 @@
 let express = require('express');
 let app = express();
+
+//load environment variables
 require('dotenv').config();
 
 //serving static assets
@@ -16,16 +18,13 @@ app.get("/", (req, res)=>{
 
 //json api
 app.get("/json", (req, res)=>{
-  const messageStyle = process.env.MESSAGE_STYLE || 'uppercase';
-
-  // Define the message based on the MESSAGE_STYLE variable
-  const message = messageStyle === 'uppercase' ? 'HELLO JSON' : 'Hello json';
-
-  // Create the response object
-  const responseObject = { message };
+    let response = "Hello json";
+  if(process.env.MESSAGE_STYLE === "uppercase"){
+    response = response.toUpperCase();
+  }
 
   // Send the response as JSON
-  res.json(responseObject);
+  res.json({ "message": response });
 });
 
 
