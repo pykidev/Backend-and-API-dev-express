@@ -3,7 +3,9 @@ let app = express();
 // console.log("Hello World");
 //methods
 app.get("/", (req, res)=>{
-    res.send("Hello Express");
+    // res.send("Hello Express");
+    let indexPath = __dirname + "/views/index.html";
+    res.sendFile(indexPath);
 });
 
 
