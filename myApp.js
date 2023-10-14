@@ -9,6 +9,14 @@ let staticPath = __dirname + "/public";
 //mounting the middleware to serve static files
 app.use("/public", express.static(staticPath));
 // console.log("Hello World");
+//custpm middleware root logger
+function simple_logger(req, res, next){
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+}
+
+app.use(simple_logger);
+
 //methods
 app.get("/", (req, res)=>{
     // res.send("Hello Express");
