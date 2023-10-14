@@ -37,12 +37,16 @@ app.get("/json", (req, res)=>{
 
 app.get("/now", (req, res, next) => {
     req.time = new Date().toString();
-    // const time = timeString.match(/\d{2}:\d{2}:\d{2}/)[0];
-    // req.time = time;
     next();
 }, (req, res)=>{
     res.send({time:req.time});
-})
+});
+
+//get route parameters
+app.get('/:word/echo', (req, res) => {
+    let word = req.params.word;
+    res.send({echo:word});
+});
 
 
 
