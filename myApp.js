@@ -54,7 +54,7 @@ app.get('/name', function handler_(req, res){
     }
 })
 
-app.route('/name').get(handler_).post(handler_)
+// app.route('/name').get(handler_).post(handler_)
 
 
 
