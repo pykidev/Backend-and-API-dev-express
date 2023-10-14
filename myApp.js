@@ -36,12 +36,12 @@ app.get("/json", (req, res)=>{
 });
 
 app.get("/now", (req, res, next) => {
-    let timeString = new Date().toString();
-    const time = timeString.match(/\d{2}:\d{2}:\d{2}/)[0];
-    req.time = time;
+    req.time = new Date().toString();
+    // const time = timeString.match(/\d{2}:\d{2}:\d{2}/)[0];
+    // req.time = time;
     next();
 }, (req, res)=>{
-    res.json({time:req.time});
+    res.send({time:req.time});
 })
 
 
