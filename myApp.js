@@ -13,6 +13,10 @@ app.get("/", (req, res)=>{
     res.sendFile(indexPath);
 });
 
+//json api
+app.get("/json", (req, res)=>{
+    res.json({"message":"Hello json"});
+});
 
 
 
