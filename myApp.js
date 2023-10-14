@@ -56,7 +56,13 @@ app.get('/name', function handler_(req, res){
     if(req.query != {}){
         res.send({name: req.query.first + " " + req.query.last});
     }
-})
+});
+
+app.post('/name', (req, res)=>{
+    if(req.query != {}){
+        res.send({name: req.body.first + " " + req.body.last});
+    }
+});
 
 
 
