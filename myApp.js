@@ -16,11 +16,16 @@ app.get("/", (req, res)=>{
 
 //json api
 app.get("/json", (req, res)=>{
-    if(process.env.MESSAGE_STYLE == "uppercase"){
-        res.json({"message":"HELLO JSON"});
-    }else{
-        res.json({"message":"Hello json"});
-    }
+  const messageStyle = process.env.MESSAGE_STYLE || 'uppercase';
+
+  // Define the message based on the MESSAGE_STYLE variable
+  const message = messageStyle === 'uppercase' ? 'HELLO JSON' : 'Hello json';
+
+  // Create the response object
+  const responseObject = { message };
+
+  // Send the response as JSON
+  res.json(responseObject);
 });
 
 
